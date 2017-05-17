@@ -7,6 +7,7 @@ class Oystercard
 
   BALANCE_LIMIT = 90
   MINIMUM_FARE = 1
+  PENALTY_FARE = 6
 
   def initialize(journey = Journey.new)
     @balance = 0
@@ -30,6 +31,16 @@ class Oystercard
 
   def retrieve_journey_history
     @journey.journeys_list
+  end
+
+  def fare
+    return MINIMUM_FARE unless @journey.journeys_list.empty?
+    return PENALTY_FARE
+    # elsif @journey.in_journey?
+    #   PENALTY_FARE
+    # else
+    #   MINIMUM_FARE
+    # end
   end
 
   private

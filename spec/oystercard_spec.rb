@@ -3,6 +3,9 @@ require 'oystercard'
 RSpec.describe Oystercard do
   subject(:card) { Oystercard.new }
 
+  let(:entry_station) { double(:station) }
+  let(:exit_station) { double(:station) }
+
   it 'have a starting default balance of zero.' do
     expect(card.balance).to eq 0
   end
@@ -27,8 +30,6 @@ RSpec.describe Oystercard do
   end
 
   describe '#touch_out' do
-    let(:entry_station) { double(:station) }
-    let(:exit_station) { double(:station) }
 
     it "deducts #{Oystercard::MINIMUM_FARE} from balance" do
       card.top_up(Oystercard::MINIMUM_FARE)
@@ -37,8 +38,6 @@ RSpec.describe Oystercard do
   end
 
   describe '#retrieve_journey_history' do
-    let(:entry_station) { double(:entry_station) }
-    let(:exit_station) { double(:exit_station) }
 
     it 'returns a list for one journey' do
       card.top_up(Oystercard::MINIMUM_FARE)
@@ -46,5 +45,25 @@ RSpec.describe Oystercard do
       card.touch_out(exit_station)
       expect(card.retrieve_journey_history).to eq [{ entry: entry_station, exit: exit_station }]
     end
+  end
+
+  describe '#fare' do
+    before(:each) { card.top_up(Oystercard::MINIMUM_FARE) }
+
+    it 'know the minimum fare' do
+      card.touch_in(entry_station)
+      card.touch_out(exit_station)
+      expect(card.fare).to eq Oystercard::MINIMUM_FARE
+    end
+
+    it 'knows when an entry station is not present' do
+      expect(card.fare).to eq Oystercard::PENALTY_FARE
+    end
+
+    it 'knows when an exit station is not present' do
+      card.touch_in(entry_station)
+      expect(card.fare).to eq Oystercard::PENALTY_FARE
+    end
+
   end
 end

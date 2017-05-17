@@ -3,26 +3,31 @@ class Journey
   attr_reader :entry_station, :journeys_list
 
   def initialize
-    @entry_station = nil
+    @trip = {}
     @journeys_list = []
   end
 
   def in_journey?
-    !!entry_station
+    !!@trip[:entry]
   end
 
   def start_a_journey(station)
-    @entry_station = station
+    @trip[:entry] = station
+    @trip[:exit] = nil
+    # @entry_station = station
   end
 
   def end_a_journey(station)
+    @trip[:entry] ||= nil
+    @trip[:exit] = station
     log_journey(station)
-    @entry_station = nil
+    # @entry_station = nil
   end
 
   private
 
   def log_journey(exit_station)
-    @journeys_list << { entry: entry_station, exit: exit_station }
+    @journeys_list << @trip
+    @trip = {}
   end
 end
