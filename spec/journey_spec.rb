@@ -39,9 +39,9 @@ describe Journey do
     end
 
     it 'logs a completed journey' do
-      p journey.start_a_journey(station)
-      p journey.end_a_journey(exit_station)
-      expect(journey.journeys).to eq [{ entry: station, exit: exit_station }]
+      journey.start_a_journey(station)
+      journey.end_a_journey(exit_station)
+      expect(journey.journeys_list).to eq [{ entry: station, exit: exit_station }]
     end
   end
 end

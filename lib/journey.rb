@@ -1,9 +1,10 @@
+# Store Journeys Informations
 class Journey
-  attr_reader :entry_station, :journeys
+  attr_reader :entry_station, :journeys_list
 
   def initialize
     @entry_station = nil
-    @journeys = []
+    @journeys_list = []
   end
 
   def in_journey?
@@ -20,7 +21,8 @@ class Journey
   end
 
   private
+
   def log_journey(exit_station)
-    journeys << { entry: entry_station, exit: exit_station }
+    @journeys_list << { entry: entry_station, exit: exit_station }
   end
 end
