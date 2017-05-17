@@ -1,7 +1,7 @@
 {
   "RSpec": {
     "coverage": {
-      "/Users/daniele/Git/Projects/oystercard/spec/feature_spec.rb": [
+      "/Users/bannastre/Google Drive/Projects/Makers/Course/Daniele/oystercard/spec/feature_spec.rb": [
         1,
         null,
         1,
@@ -23,7 +23,7 @@
         null,
         null
       ],
-      "/Users/daniele/Git/Projects/oystercard/lib/oystercard.rb": [
+      "/Users/bannastre/Google Drive/Projects/Makers/Course/Daniele/oystercard/lib/oystercard.rb": [
         null,
         1,
         1,
@@ -68,7 +68,7 @@
         null,
         null
       ],
-      "/Users/daniele/Git/Projects/oystercard/spec/oystercard_spec.rb": [
+      "/Users/bannastre/Google Drive/Projects/Makers/Course/Daniele/oystercard/spec/oystercard_spec.rb": [
         1,
         null,
         1,
@@ -154,8 +154,41 @@
         null,
         null,
         null
+      ],
+      "/Users/bannastre/Google Drive/Projects/Makers/Course/Daniele/oystercard/spec/station_spec.rb": [
+        1,
+        null,
+        1,
+        null,
+        3,
+        null,
+        1,
+        1,
+        1,
+        null,
+        null,
+        null,
+        1,
+        1,
+        1,
+        null,
+        null,
+        null,
+        null
+      ],
+      "/Users/bannastre/Google Drive/Projects/Makers/Course/Daniele/oystercard/lib/station.rb": [
+        1,
+        null,
+        1,
+        null,
+        1,
+        2,
+        2,
+        null,
+        null,
+        null
       ]
     },
-    "timestamp": 1495018915
+    "timestamp": 1495020444
   }
 }
