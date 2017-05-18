@@ -1,6 +1,7 @@
 require_relative 'station'
 require_relative 'journey'
 
+# Responsible for keeping a travellers balance and trips
 class Oystercard
   attr_reader :balance
 

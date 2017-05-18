@@ -1,4 +1,4 @@
-# Store Journeys Informations
+# Responsible for Storing Journey Informations
 class Journey
   attr_reader :journeys_list, :trip
 
@@ -10,7 +10,7 @@ class Journey
   end
 
   def in_journey?
-    !!@trip[:entry]
+    !@trip[:entry].nil?
   end
 
   def start_a_journey(station)
@@ -21,12 +21,12 @@ class Journey
   def end_a_journey(station)
     @trip[:entry] ||= nil
     @trip[:exit] = station
-    log_journey(station)
+    log_journey
   end
 
   def fare
     return PENALTY_FARE if penalty?
-    1
+    Oystercard::MINIMUM_FARE
   end
 
   private
@@ -35,7 +35,7 @@ class Journey
     !@trip[:entry] && !@trip[:exit]
   end
 
-  def log_journey(exit_station)
+  def log_journey
     @journeys_list << @trip
     @trip = {}
   end
