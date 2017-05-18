@@ -1,22 +1,11 @@
 require 'journey'
 
-# @journey_list = [] ?? who's responsibility ??
-
-=begin
-in_journey?
-start_a_journey (called by touch_in)
-  -> record entry station
-end_a_journey (called by touch_out)
-  -> log_journey?
-  -> set entry_station to nil
-=end
-
-
 describe Journey do
   subject(:journey) { described_class.new }
 
   let(:station) { double(:station) }
   let(:exit_station) { double(:station) }
+  let(:oystercard) { double(:oystercard) }
 
   describe '#in_journey' do
     it 'knows whether it is in a journey' do
@@ -27,7 +16,7 @@ describe Journey do
   describe '#start_a_journey' do
     it 'changes the @entry_station' do
       journey.start_a_journey(station)
-      expect(journey.entry_station).to eq station
+      expect(journey.trip[:entry]).to eq station
     end
   end
 
@@ -42,6 +31,12 @@ describe Journey do
       journey.start_a_journey(station)
       journey.end_a_journey(exit_station)
       expect(journey.journeys_list).to eq [{ entry: station, exit: exit_station }]
+    end
+  end
+
+  describe '#fare' do
+    it 'returns the penalty fare by default' do
+      expect(journey.fare).to eq Journey::PENALTY_FARE
     end
   end
 end

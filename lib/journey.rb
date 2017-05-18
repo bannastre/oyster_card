@@ -1,6 +1,8 @@
 # Store Journeys Informations
 class Journey
-  attr_reader :entry_station, :journeys_list
+  attr_reader :journeys_list, :trip
+
+  PENALTY_FARE = 6
 
   def initialize
     @trip = {}
@@ -14,17 +16,24 @@ class Journey
   def start_a_journey(station)
     @trip[:entry] = station
     @trip[:exit] = nil
-    # @entry_station = station
   end
 
   def end_a_journey(station)
     @trip[:entry] ||= nil
     @trip[:exit] = station
     log_journey(station)
-    # @entry_station = nil
+  end
+
+  def fare
+    return PENALTY_FARE if penalty?
+    1
   end
 
   private
+
+  def penalty?
+    !@trip[:entry] && !@trip[:exit]
+  end
 
   def log_journey(exit_station)
     @journeys_list << @trip
