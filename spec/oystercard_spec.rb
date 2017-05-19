@@ -10,6 +10,18 @@ RSpec.describe Oystercard do
     expect(card.balance).to eq 0
   end
 
+  it 'it should not be in a journey be default' do
+    expect(card.journey).to eq nil
+  end
+
+  it 'resets the entry stations' do
+   card.top_up(Oystercard::MINIMUM_FARE)
+   card.touch_in(entry_station)
+   card.touch_out(exit_station)
+   expect(card.journey.trip).to eq({})
+ end
+
+
   describe '#top_up' do
     it 'can top up the balance with desired amount' do
       expect { card.top_up(1) }.to change { card.balance }.to 1
@@ -30,7 +42,7 @@ RSpec.describe Oystercard do
   end
 
   describe '#touch_out' do
-    
+
     it "deducts #{Oystercard::MINIMUM_FARE} from balance" do
       card.top_up(Oystercard::MINIMUM_FARE)
       card.touch_in(entry_station)

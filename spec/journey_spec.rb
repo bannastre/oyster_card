@@ -6,11 +6,11 @@ describe Journey do
   let(:exit_station) { double(:station) }
   let(:oystercard) { double(:oystercard) }
 
-  describe '#in_journey' do
-    it 'knows whether it is in a journey' do
-      expect(journey.in_journey?).to eq false
-    end
-  end
+  # describe '#in_journey' do
+  #   it 'knows whether it is in a journey' do
+  #     expect(journey.in_journey?).to eq false
+  #   end
+  # end
 
   describe '#start_a_journey' do
     it 'changes the @entry_station' do
@@ -20,11 +20,11 @@ describe Journey do
   end
 
   describe '#end_a_journey' do
-    it 'resets the entry stations' do
-      journey.start_a_journey(station)
-      journey.end_a_journey(exit_station)
-      expect(journey.in_journey?).to eq false
-    end
+    # it 'resets the entry stations' do
+    #   journey.start_a_journey(station)
+    #   journey.end_a_journey(exit_station)
+    #   expect(journey.in_journey?).to eq false
+    # end
 
     it 'logs a completed journey' do
       journey.start_a_journey(station)
