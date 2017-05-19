@@ -1,21 +1,9 @@
 require 'journey'
 
-# @journey_list = [] ?? who's responsibility ??
-
-=begin
-in_journey?
-start_a_journey (called by touch_in)
-  -> record entry station
-end_a_journey (called by touch_out)
-  -> log_journey?
-  -> set entry_station to nil
-=end
-
-
 describe Journey do
   subject(:journey) { described_class.new }
 
-  let(:station) { double(:station) }
+  let(:entry_station) { double(:station) }
   let(:exit_station) { double(:station) }
 
   describe '#in_journey' do
@@ -26,22 +14,22 @@ describe Journey do
 
   describe '#start_a_journey' do
     it 'changes the @entry_station' do
-      journey.start_a_journey(station)
-      expect(journey.entry_station).to eq station
+      journey.start_a_journey(entry_station)
+      expect(journey.current_journey[:entry]).to eq entry_station
     end
   end
 
   describe '#end_a_journey' do
     it 'resets the entry stations' do
-      journey.start_a_journey(station)
+      journey.start_a_journey(entry_station)
       journey.end_a_journey(exit_station)
       expect(journey.in_journey?).to eq false
     end
 
     it 'logs a completed journey' do
-      journey.start_a_journey(station)
+      journey.start_a_journey(entry_station)
       journey.end_a_journey(exit_station)
-      expect(journey.journeys_list).to eq [{ entry: station, exit: exit_station }]
+      expect(journey.journeys_list).to eq [{ entry: entry_station, exit: exit_station }]
     end
   end
 end

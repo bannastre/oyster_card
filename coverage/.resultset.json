@@ -1,7 +1,7 @@
 {
   "RSpec": {
     "coverage": {
-      "/Users/bannastre/Google Drive/Projects/Makers/Course/Daniele/oystercard/spec/feature_spec.rb": [
+      "/Users/bannastre/Google Drive/Projects/Makers/Course/oystercard/spec/feature_spec.rb": [
         null,
         null,
         null,
@@ -23,20 +23,8 @@
         null,
         null
       ],
-      "/Users/bannastre/Google Drive/Projects/Makers/Course/Daniele/oystercard/spec/journey_spec.rb": [
+      "/Users/bannastre/Google Drive/Projects/Makers/Course/oystercard/spec/journey_spec.rb": [
         1,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
         null,
         1,
         5,
@@ -72,7 +60,7 @@
         null,
         null
       ],
-      "/Users/bannastre/Google Drive/Projects/Makers/Course/Daniele/oystercard/lib/journey.rb": [
+      "/Users/bannastre/Google Drive/Projects/Makers/Course/oystercard/lib/journey.rb": [
         null,
         1,
         1,
@@ -91,12 +79,10 @@
         6,
         null,
         null,
-        null,
         1,
         5,
         5,
         5,
-        null,
         null,
         null,
         1,
@@ -107,7 +93,7 @@
         null,
         null
       ],
-      "/Users/bannastre/Google Drive/Projects/Makers/Course/Daniele/oystercard/spec/oystercard_spec.rb": [
+      "/Users/bannastre/Google Drive/Projects/Makers/Course/oystercard/spec/oystercard_spec.rb": [
         1,
         null,
         1,
@@ -178,7 +164,7 @@
         null,
         null
       ],
-      "/Users/bannastre/Google Drive/Projects/Makers/Course/Daniele/oystercard/lib/oystercard.rb": [
+      "/Users/bannastre/Google Drive/Projects/Makers/Course/oystercard/lib/oystercard.rb": [
         1,
         1,
         null,
@@ -219,11 +205,6 @@
         2,
         null,
         null,
-        null,
-        null,
-        null,
-        null,
-        null,
         1,
         null,
         1,
@@ -231,7 +212,7 @@
         null,
         null
       ],
-      "/Users/bannastre/Google Drive/Projects/Makers/Course/Daniele/oystercard/lib/station.rb": [
+      "/Users/bannastre/Google Drive/Projects/Makers/Course/oystercard/lib/station.rb": [
         1,
         null,
         1,
@@ -243,7 +224,7 @@
         null,
         null
       ],
-      "/Users/bannastre/Google Drive/Projects/Makers/Course/Daniele/oystercard/spec/station_spec.rb": [
+      "/Users/bannastre/Google Drive/Projects/Makers/Course/oystercard/spec/station_spec.rb": [
         1,
         null,
         1,
@@ -263,6 +244,6 @@
         null
       ]
     },
-    "timestamp": 1495036640
+    "timestamp": 1495195065
   }
 }

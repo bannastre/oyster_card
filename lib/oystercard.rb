@@ -36,11 +36,6 @@ class Oystercard
   def fare
     return MINIMUM_FARE unless @journey.journeys_list.empty?
     return PENALTY_FARE
-    # elsif @journey.in_journey?
-    #   PENALTY_FARE
-    # else
-    #   MINIMUM_FARE
-    # end
   end
 
   private
