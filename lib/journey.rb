@@ -16,6 +16,7 @@ class Journey
   def start_a_journey(station)
     @trip[:entry] = station
     @trip[:exit] = nil
+    station
   end
 
   def end_a_journey(station)

@@ -3,12 +3,12 @@ require_relative 'journey'
 
 # Responsible for keeping a travellers balance and trips
 class Oystercard
-  attr_reader :balance
+  attr_reader :balance, :journey
 
   BALANCE_LIMIT = 90
   MINIMUM_FARE = 1
 
-  def initialize(journey: Journey.new)
+  def initialize(journey = Journey.new)
     @balance = 0
     @journey = journey
   end
