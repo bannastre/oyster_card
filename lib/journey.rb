@@ -16,7 +16,6 @@ class Journey
   def start_a_journey(station)
     @trip[:entry] = station
     @trip[:exit] = nil
-    station
   end
 
   def end_a_journey(station)
@@ -29,15 +28,14 @@ class Journey
     return PENALTY_FARE if penalty?
     Oystercard::MINIMUM_FARE
   end
-
+  
   private
 
   def penalty?
-    !@trip[:entry] && !@trip[:exit]
+    @trip[:entry].nil? || @trip[:exit].nil?
   end
 
   def log_journey
     @journeys_list << @trip
-    @trip = {}
   end
 end

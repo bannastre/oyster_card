@@ -30,7 +30,7 @@ RSpec.describe Oystercard do
   end
 
   describe '#touch_out' do
-
+    
     it "deducts #{Oystercard::MINIMUM_FARE} from balance" do
       card.top_up(Oystercard::MINIMUM_FARE)
       card.touch_in(entry_station)

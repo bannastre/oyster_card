@@ -37,5 +37,16 @@ describe Journey do
     it 'returns the penalty fare by default' do
       expect(journey.fare).to eq Journey::PENALTY_FARE
     end
+
+    it 'returns the penalty fare if a user touches in twice' do
+      journey.start_a_journey(station)
+      journey.start_a_journey(station)
+      expect(journey.fare).to eq Journey::PENALTY_FARE
+    end
+
+    it 'returns a penalty fare if the user does not touch in' do
+      journey.end_a_journey(nil)
+      expect(journey.fare).to eq Journey::PENALTY_FARE
+    end
   end
 end
