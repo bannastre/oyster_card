@@ -2,6 +2,9 @@
 class Journey
   attr_reader :entry_station, :journeys_list, :current_journey
 
+  PENALTY_FARE = 6
+  MINIMUM_FARE = 1
+
   def initialize
     @current_journey = {}
     @journeys_list = []
@@ -22,7 +25,16 @@ class Journey
     log_journey(station)
   end
 
+  def fare
+    return MINIMUM_FARE unless penalty?
+    return PENALTY_FARE
+  end
+
   private
+
+  def penalty?
+    @current_journey[:entry].nil?
+  end
 
   def log_journey(exit_station)
     @journeys_list << @current_journey

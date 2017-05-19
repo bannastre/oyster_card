@@ -24,45 +24,46 @@ RSpec.describe Oystercard do
   describe '#touch_in' do
     let(:station) { double(:station) }
 
-    it "raise error if balance is below £#{Oystercard::MINIMUM_FARE}" do
+    it "raise error if balance is below £#{Journey::MINIMUM_FARE}" do
       expect { card.touch_in(station) }.to raise_error 'Balance below minimum.'
     end
   end
 
   describe '#touch_out' do
-
-    it "deducts #{Oystercard::MINIMUM_FARE} from balance" do
-      card.top_up(Oystercard::MINIMUM_FARE)
-      expect { card.touch_out(exit_station) }.to change { card.balance }.by(-Oystercard::MINIMUM_FARE)
+    it 'logs a journey' do
+      # log a journey now in journey spec
     end
   end
 
   describe '#retrieve_journey_history' do
+    before(:each) { card.top_up(Journey::MINIMUM_FARE) }
 
     it 'returns a list for one journey' do
-      card.top_up(Oystercard::MINIMUM_FARE)
       card.touch_in(entry_station)
       card.touch_out(exit_station)
       expect(card.retrieve_journey_history).to eq [{ entry: entry_station, exit: exit_station }]
     end
+
+    it "returns 'nil' for entry_station if not tapped in" do
+      card.touch_in(entry_station)
+    end
   end
 
-  describe '#fare' do
-    before(:each) { card.top_up(Oystercard::MINIMUM_FARE) }
+  describe '#deduct_fare' do
+    before(:each) { card.top_up(Journey::MINIMUM_FARE) }
 
     it 'know the minimum fare' do
       card.touch_in(entry_station)
-      card.touch_out(exit_station)
-      expect(card.fare).to eq Oystercard::MINIMUM_FARE
+      expect { card.touch_out(exit_station) }.to change { card.balance }.by(-Journey::MINIMUM_FARE)
     end
 
     it 'knows when an entry station is not present' do
-      expect(card.fare).to eq Oystercard::PENALTY_FARE
+      expect { card.touch_out(exit_station) }.to change { card.balance }.by(-Journey::PENALTY_FARE)
     end
 
     it 'knows when an exit station is not present' do
       card.touch_in(entry_station)
-      expect(card.fare).to eq Oystercard::PENALTY_FARE
+      expect { card.touch_in(entry_station) }.to change { card.balance }.by(-Journey::PENALTY_FARE)
     end
 
   end
